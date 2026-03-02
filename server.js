@@ -25,6 +25,16 @@ function layout(title, content) {
 <body>
   <!-- Decorative background pokeballs -->
   <div class="site-bg" aria-hidden="true"></div>
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo">&#9670; Pokémon Regions</a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/pokedex">Pokédex</a></li>
+        <li><a href="/favorites">Favorites</a></li>
+      </ul>
+    </div>
+  </nav>
   <main>
     ${content}
   </main>

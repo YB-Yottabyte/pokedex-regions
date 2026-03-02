@@ -30,6 +30,53 @@ body {
 
 main { flex: 1; position: relative; z-index: 1; }
 
+/* ─── Site Nav ───────────────────────────────────────────────────────────── */
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(8, 11, 16, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.65rem;
+  padding-bottom: 0.65rem;
+}
+
+.nav-logo {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #ffde00;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.nav-logo:hover { color: #ffe74d; }
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.75rem;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: #ffde00; }
+
 /* ─── Custom Scrollbar ───────────────────────────────────────────────────── */
 
 ::-webkit-scrollbar        { width: 7px; }

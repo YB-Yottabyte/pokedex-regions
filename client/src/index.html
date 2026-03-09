@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokémon Regions Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="site-bg" aria-hidden="true"></div>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo">&#9670; Pokémon Regions</a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/pokedex">Pokédex</a></li>
+        <li><a href="/favorites">Favorites</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-video-bg">
+        <div id="yt-player"></div>
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">&#9670;&nbsp; Pokémon Regions Explorer</p>
+        <h1>Explore<br>Every <span>Region</span></h1>
+        <p class="hero-sub" id="hero-sub">Dive into all main-series regions &mdash; from the original Kanto to the open-world Paldea.</p>
+        <a href="#regions" class="hero-cta">Browse Regions &#8595;</a>
+      </div>
+      <div class="scroll-hint">
+        <span class="scroll-arrow">&#8595;</span>
+        <span>scroll</span>
+      </div>
+    </section>
+
+    <div id="regions" class="container">
+      <p class="regions-section-label" id="section-label">All Regions</p>
+
+      <div class="search-wrap">
+        <input
+          type="text"
+          id="search-input"
+          class="search-input"
+          placeholder="Search by name, professor, villain, or generation…"
+          autocomplete="off"
+        >
+      </div>
+
+      <div class="regions-grid" id="regions-grid">
+        <!-- Skeleton loading cards -->
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="container">
+    <span class="footer-ball" aria-hidden="true"></span>
+    <p>&copy; 2026 Sai Rithwik Kukunuri. All rights reserved.</p>
+  </footer>
+
+  <script src="/js/index.js"></script>
+  <script>
+    window.onYouTubeIframeAPIReady = function () {
+      new YT.Player('yt-player', {
+        videoId: '38XHXMdDegg',
+        playerVars: {
+          autoplay: 1, mute: 1, controls: 0,
+          showinfo: 0, rel: 0, modestbranding: 1,
+          start: 10, end: 82,
+          iv_load_policy: 3, disablekb: 1, fs: 0
+        },
+        events: {
+          onReady: function(e) { e.target.playVideo(); },
+          onStateChange: function(e) {
+            if (e.data === YT.PlayerState.ENDED) {
+              e.target.seekTo(10, true);
+              e.target.playVideo();
+            }
+          }
+        }
+      });
+    };
+  </script>
+  <script src="https://www.youtube.com/iframe_api" async></script>
+</body>
+</html>

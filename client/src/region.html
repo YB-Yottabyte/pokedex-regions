@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Region — Pokémon Regions Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="site-bg" aria-hidden="true"></div>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo">&#9670; Pokémon Regions</a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/pokedex">Pokédex</a></li>
+        <li><a href="/favorites">Favorites</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="region-content">
+    <!-- Populated by region.js -->
+    <div class="container page-content">
+      <div class="skeleton" style="height:120px;margin-bottom:1.5rem;border-radius:16px;"></div>
+      <div class="skeleton" style="height:400px;border-radius:16px;"></div>
+    </div>
+  </main>
+
+  <footer class="container">
+    <span class="footer-ball" aria-hidden="true"></span>
+    <p>&copy; 2026 Sai Rithwik Kukunuri. All rights reserved.</p>
+  </footer>
+
+  <script src="/js/region.js"></script>
+</body>
+</html>

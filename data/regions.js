@@ -6,7 +6,7 @@ const regions = [
     games: ["Pokémon Red & Blue", "Pokémon Yellow", "FireRed & LeafGreen", "Let's Go Pikachu & Eevee"],
     description: "The original Pokémon region, based on Japan's Kantō region. Kanto is where every trainer's journey began in 1996. From the humble Pallet Town to the bustling Celadon City, Kanto offers diverse terrain including forests, caves, and oceans. It's home to the first 151 Pokémon and iconic locations like the S.S. Anne, Pokémon Tower, and Silph Co.",
     starters: [
-      { name: "Bulbasaur", type: "Grass/Poison", id: 1 },
+      { name: "Bulbasaur", type: "Grass/Poison", id: 1, image: "/assets/kanto/grass.png" },
       { name: "Charmander", type: "Fire", id: 4 },
       { name: "Squirtle", type: "Water", id: 7 }
     ],

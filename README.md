@@ -9,13 +9,14 @@ An interactive Pokemon Regions web app that serves region data from a PostgreSQL
 ## GIF Walkthrough
 
 - Add your GIF here (required for submission):
-	- `![Walkthrough](./assets/project-walkthrough.gif)`
+  - `![Walkthrough](./assets/project-walkthrough.gif)`
 
 ## Description
 
 This project is a refactor of my Unit 1 listicle app. Instead of reading static data directly in the frontend, the app now fetches region data from a PostgreSQL database via API routes.
 
 Users can:
+
 - Browse all Pokemon regions on the home page.
 - Open a dedicated detail page for each region.
 - Search regions by specific attributes.
@@ -40,11 +41,13 @@ Users can:
 ## Database Evidence (Required by Rubric)
 
 Add these before final submission:
+
 - Railway PostgreSQL project link or screenshot
 - Screenshot of the `regions` table schema
 - Screenshot of table rows that match your displayed region data
 
 Suggested placement:
+
 - `![Railway Database](./assets/railway-db.png)`
 - `![Regions Table Schema](./assets/regions-schema.png)`
 - `![Regions Table Data](./assets/regions-data.png)`
@@ -52,11 +55,11 @@ Suggested placement:
 ## API Endpoints
 
 - `GET /api/regions`
-	- Returns all regions.
+  - Returns all regions.
 - `GET /api/regions?search=<query>`
-	- Filters regions by name, professor, villain, or exact generation value.
+  - Filters regions by name, professor, villain, or exact generation value.
 - `GET /api/regions/:slug`
-	- Returns one region by slug.
+  - Returns one region by slug.
 
 ## Project Structure
 
@@ -111,6 +114,7 @@ npm run dev
 ## Search Feature
 
 Search is available on the homepage. Users can search by:
+
 - Region name (example: `Kanto`)
 - Professor (example: `Oak`)
 - Villain team (example: `Rocket`)

@@ -1,19 +1,29 @@
 {
-  "name": "pokemon-regions",
-  "version": "2.0.0",
-  "description": "A Pokémon Regions Explorer backed by a PostgreSQL database",
+  "name": "virtual-community-space",
+  "version": "3.0.0",
+  "description": "Virtual Community Space - React App with Express API and PostgreSQL",
   "main": "server/server.js",
   "scripts": {
+    "dev-server": "nodemon server/server.js",
+    "dev-client": "vite",
+    "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
+    "build": "vite build",
     "start": "node server/server.js",
-    "dev": "nodemon server/server.js",
-    "seed": "node server/config/seed.js"
+    "seed": "node server/config/community-seed.js"
   },
   "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "axios": "^1.6.0",
     "dotenv": "^16.4.5",
     "express": "^4.18.2",
     "pg": "^8.11.3"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "@vitejs/plugin-react": "^4.2.0",
+    "nodemon": "^3.0.1",
+    "vite": "^5.0.0",
+    "concurrently": "^8.2.0"
   }
 }

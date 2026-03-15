@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { getAllEvents, getLocations } from '../services/api';
 import EventCard from '../components/EventCard';
 
-export default function AllEvents() {
+export default function Events() {
   const [events, setEvents] = useState([]);
   const [locations, setLocations] = useState([]);
   const [loading, setLoading] = useState(true);

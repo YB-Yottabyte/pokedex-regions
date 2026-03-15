@@ -244,6 +244,13 @@ a:hover {
   margin-bottom: 2rem;
 }
 
+.regions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
 .location-card-link {
   text-decoration: none;
   color: inherit;
@@ -263,6 +270,88 @@ a:hover {
 .location-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
+}
+
+.region-card {
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-left: 4px solid;
+}
+
+.region-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.region-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.region-card-header {
+  padding: 1.5rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.region-card-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.generation {
+  font-size: 0.875rem;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.region-card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.region-card-desc {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: var(--text-light);
+  flex: 1;
+}
+
+.region-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.stat {
+  text-align: center;
+  padding: 0.75rem;
+  background-color: var(--light-bg);
+  border-radius: 0.5rem;
+}
+
+.stat strong {
+  display: block;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  margin-bottom: 0.25rem;
+}
+
+.stat span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .location-card-image {
@@ -337,6 +426,148 @@ a:hover {
 
 .location-detail {
   margin-bottom: 3rem;
+}
+
+.region-detail {
+  margin-bottom: 3rem;
+}
+
+.region-detail-header {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-left: 5px solid;
+}
+
+.region-detail-info h1 {
+  margin-top: 0;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.region-description {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.region-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.meta-item {
+  padding: 1rem;
+  background: var(--light-bg);
+  border-radius: 0.5rem;
+}
+
+.meta-item strong {
+  color: var(--primary-color);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.region-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.region-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.region-section h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+.starter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.starter-card {
+  background: var(--light-bg);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  text-align: center;
+  border-top: 3px solid var(--primary-color);
+}
+
+.starter-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.starter-type {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.starter-id {
+  font-size: 0.875rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.legendary-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.legendary-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.legendary-id {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.location-list,
+.games-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.location-list li,
+.games-list li {
+  padding: 0.75rem 0;
+  padding-left: 1.5rem;
+  color: var(--text-light);
+  position: relative;
+}
+
+.location-list li::before,
+.games-list li::before {
+  content: "📍";
+  position: absolute;
+  left: 0;
+  margin-right: 0.5rem;
+}
+
+.games-list li::before {
+  content: "🎮";
 }
 
 .location-detail-header {

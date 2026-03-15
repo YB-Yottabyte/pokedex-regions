@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import LocationDetail from './pages/LocationDetail';
-import AllEvents from './pages/AllEvents';
+import RegionDetail from './pages/RegionDetail';
+import Events from './pages/Events';
+import EventDetail from './pages/EventDetail';
 import './index.css';
 
 export default function App() {
@@ -22,13 +23,14 @@ export default function App() {
         <main className="app-main">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/location/:slug" element={<LocationDetail />} />
-            <Route path="/events" element={<AllEvents />} />
+            <Route path="/region/:slug" element={<RegionDetail />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/events/:locationSlug" element={<EventDetail />} />
           </Routes>
         </main>
 
         <footer className="app-footer">
-          <p>&copy; 2026 Pokémon Regions Explorer. All rights reserved.</p>
+          <p>&copy; 2026 Pokémon Regions Explorer. Explore regions and community events!</p>
         </footer>
       </div>
     </Router>

@@ -4,7 +4,7 @@ An interactive Pokemon Regions web app that serves region data from a PostgreSQL
 
 ## Live Demo
 
-🚀 Visit the live app: https://pokedex-regions.vercel.app/
+Visit the live app: https://pokedex-regions.vercel.app/
 
 ## GIF Walkthrough
 
@@ -38,7 +38,7 @@ Users can:
 
 - [x] The user can search for items with a specific attribute.
 
-## Database Evidence (Required by Rubric)
+## Database Evidence
 
 Add these before final submission:
 

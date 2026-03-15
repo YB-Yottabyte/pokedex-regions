@@ -65,20 +65,20 @@ export default function AllEvents() {
   return (
     <div className="container">
       <section className="events-page-header">
-        <h1>All Community Events</h1>
-        <p>Browse all upcoming and past events across all locations</p>
+        <h1>Community Events</h1>
+        <p>Discover Pokémon League tournaments, trainer workshops, and regional celebrations happening across all regions</p>
       </section>
 
       <div className="events-controls">
         <div className="filter-group">
-          <label htmlFor="location-filter">Filter by Location:</label>
+          <label htmlFor="location-filter">Filter by Region:</label>
           <select 
             id="location-filter"
             value={filter} 
             onChange={(e) => setFilter(e.target.value)}
             className="select-input"
           >
-            <option value="all">All Locations</option>
+            <option value="all">All Regions</option>
             {locations.map(loc => (
               <option key={loc.id} value={loc.id}>
                 {loc.name}
@@ -96,7 +96,7 @@ export default function AllEvents() {
             className="select-input"
           >
             <option value="date">Date</option>
-            <option value="location">Location</option>
+            <option value="location">Region</option>
             <option value="category">Category</option>
           </select>
         </div>
@@ -109,7 +109,7 @@ export default function AllEvents() {
       {sortedEvents.length === 0 ? (
         <div className="no-events">
           <p>No events found with the selected filters.</p>
-          <Link to="/" className="btn btn-primary">Back to Locations</Link>
+          <Link to="/" className="btn btn-primary">Back to Regions</Link>
         </div>
       ) : (
         <div className="events-list">

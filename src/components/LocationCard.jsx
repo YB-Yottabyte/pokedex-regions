@@ -12,7 +12,7 @@ export default function LocationCard({ location, eventCount = 0 }) {
           <h3>{location.name}</h3>
           <p className="location-card-desc">{location.description}</p>
           <div className="location-card-meta">
-            <span className="event-count">📅 {eventCount} event{eventCount !== 1 ? 's' : ''}</span>
+            <span className="event-count">⚡ {eventCount} event{eventCount !== 1 ? 's' : ''}</span>
           </div>
         </div>
       </div>

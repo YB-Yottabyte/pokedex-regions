@@ -20,7 +20,7 @@ export default function Home() {
         setEvents(eventsData);
       } catch (err) {
         console.error(err);
-        setError('Failed to load locations. Please try again.');
+        setError('Failed to load Pokemon regions. Please try again.');
       } finally {
         setLoading(false);
       }
@@ -31,7 +31,7 @@ export default function Home() {
   if (loading) {
     return (
       <div className="container">
-        <div className="loading">Loading locations...</div>
+        <div className="loading">Loading Pokémon regions...</div>
       </div>
     );
   }
@@ -56,8 +56,8 @@ export default function Home() {
   return (
     <div className="container">
       <section className="hero-section">
-        <h2>Discover Community Spaces</h2>
-        <p>Explore events and gatherings happening in your area</p>
+        <h2>Explore Pokémon Regions</h2>
+        <p>Browse regions and discover community events happening near you</p>
       </section>
 
       <div className="locations-grid">

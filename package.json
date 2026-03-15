@@ -1,7 +1,7 @@
 {
-  "name": "virtual-community-space",
+  "name": "pokemon-regions",
   "version": "3.0.0",
-  "description": "Virtual Community Space - React App with Express API and PostgreSQL",
+  "description": "Pokémon Regions Explorer - Browse regions, explore community events, and discover tournaments",
   "main": "server/server.js",
   "scripts": {
     "dev-server": "nodemon server/server.js",

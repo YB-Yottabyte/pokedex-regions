@@ -11,10 +11,10 @@ export default function App() {
       <div className="app">
         <header className="app-header">
           <div className="container">
-            <h1><a href="/">🌍 Virtual Community Space</a></h1>
+            <h1><a href="/">🌍 Pokémon Regions Explorer</a></h1>
             <nav className="main-nav">
-              <a href="/">Home</a>
-              <a href="/events">All Events</a>
+              <a href="/">Regions</a>
+              <a href="/events">Community Events</a>
             </nav>
           </div>
         </header>
@@ -28,7 +28,7 @@ export default function App() {
         </main>
 
         <footer className="app-footer">
-          <p>&copy; 2026 Virtual Community Space. All rights reserved.</p>
+          <p>&copy; 2026 Pokémon Regions Explorer. All rights reserved.</p>
         </footer>
       </div>
     </Router>

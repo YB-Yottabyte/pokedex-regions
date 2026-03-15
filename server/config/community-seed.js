@@ -4,7 +4,7 @@ const pool = require('./community-db');
 async function seedDatabase() {
   const client = await pool.connect();
   try {
-    // Create locations table
+    // Create locations table (will store Pokemon regions)
     await client.query(`
       CREATE TABLE IF NOT EXISTS locations (
         id SERIAL PRIMARY KEY,
@@ -39,45 +39,45 @@ async function seedDatabase() {
     await client.query('TRUNCATE TABLE events CASCADE');
     await client.query('TRUNCATE TABLE locations CASCADE');
 
-    // Seed locations
+    // Seed POKEMON REGIONS as locations
     const locations = [
       {
-        name: 'Central Park',
-        slug: 'central-park',
-        description: 'A large public urban park in the middle of Manhattan. Perfect for outdoor activities, concerts, and community gatherings.',
+        name: 'Kanto Region',
+        slug: 'kanto',
+        description: 'The original Pokémon region where trainers begin their journey. Perfect for Pokémon trainer meetups and grass-type competitions.',
         image_url: 'https://images.unsplash.com/photo-1489749798305-4fea3ba63d60?w=500',
         latitude: 40.7829,
         longitude: -73.9654
       },
       {
-        name: 'The Brooklyn Bridge Park',
-        slug: 'brooklyn-bridge-park',
-        description: 'A scenic waterfront park offering stunning views of Manhattan skyline. Popular for art installations and community events.',
-        image_url: 'https://images.unsplash.com/photo-1478359866661-c4f86dbee5b4?w=500',
+        name: 'Johto Region',
+        slug: 'johto',
+        description: 'A region steeped in tradition with ancient shrines. Host to the legendary Ho-Oh and home to classic Pokémon battles.',
+        image_url: 'https://images.unsplash.com/photo-1485579149c01123123?w=500',
         latitude: 40.7061,
         longitude: -73.9969
       },
       {
-        name: 'Williamsburg Community Center',
-        slug: 'williamsburg-community-center',
-        description: 'A multi-purpose community space hosting workshops, support groups, and cultural events for all ages.',
-        image_url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500',
+        name: 'Hoenn Region',
+        slug: 'hoenn',
+        description: 'A tropical region with vast oceans. Famous for double battles and the clash between Kyogre and Groudon.',
+        image_url: 'https://images.unsplash.com/photo-1478359866661-c4f86dbee5b4?w=500',
         latitude: 40.7081,
         longitude: -73.9576
       },
       {
-        name: 'Astoria Park',
-        slug: 'astoria-park',
-        description: 'Queens largest park featuring athletic facilities, nature trails, and regular community programming.',
-        image_url: 'https://images.unsplash.com/photo-1469022563149-aa64dbd37dae?w=500',
+        name: 'Sinnoh Region',
+        slug: 'sinnoh',
+        description: 'A snowy northern region dominated by Mt. Coronet. Home to the legendary trio: Dialga, Palkia, and Giratina.',
+        image_url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500',
         latitude: 40.7614,
         longitude: -73.9776
       },
       {
-        name: 'The High Line',
-        slug: 'the-high-line',
-        description: 'An innovative public space built on a historic freight rail line. Known for art, culture, and urban renewal.',
-        image_url: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500',
+        name: 'Unova Region',
+        slug: 'unova',
+        description: 'A bustling region inspired by New York City. Features the largest city in Pokémon and innovative trainer challenges.',
+        image_url: 'https://images.unsplash.com/photo-1469022563149-aa64dbd37dae?w=500',
         latitude: 40.7480,
         longitude: -74.0048
       }
@@ -93,117 +93,117 @@ async function seedDatabase() {
       locationIds[loc.slug] = result.rows[0].id;
     }
 
-    // Seed events
+    // Seed POKEMON-THEMED EVENTS
     const events = [
       {
-        title: 'Summer Concert Series',
-        description: 'Free live music performances featuring local and national artists. Bring blankets and picnic supplies!',
-        location_slug: 'central-park',
-        event_date: '2026-06-15 19:00:00',
-        event_time: '7:00 PM',
+        title: 'Regional Pokémon League Tournament',
+        description: 'Annual tournament where trainers battle for badges. Only the strongest trainers can compete!',
+        location_slug: 'kanto',
+        event_date: '2026-04-15 18:00:00',
+        event_time: '6:00 PM',
         image_url: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=500',
-        capacity: 500,
-        organizer: 'Parks & Rec',
-        category: 'Music'
+        capacity: 256,
+        organizer: 'Pokémon League',
+        category: 'Battle Tournament'
       },
       {
-        title: 'Community Yoga Session',
-        description: 'Outdoor yoga session for all levels. Free mats provided. Arrive 15 minutes early.',
-        location_slug: 'central-park',
-        event_date: '2026-03-22 08:00:00',
-        event_time: '8:00 AM',
+        title: 'Starter Pokémon Selection Day',
+        description: 'New trainers choose their starter Pokémon! Bulbasaur, Charmander, or Squirtle awaits.',
+        location_slug: 'kanto',
+        event_date: '2026-03-22 10:00:00',
+        event_time: '10:00 AM',
         image_url: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=500',
         capacity: 100,
-        organizer: 'Wellness NYC',
-        category: 'Health & Wellness'
+        organizer: 'Professor Oak',
+        category: 'Training'
       },
       {
-        title: 'Brooklyn Film Festival',
-        description: 'Indie and international short films screened with Q&A from filmmakers.',
-        location_slug: 'brooklyn-bridge-park',
-        event_date: '2026-04-10 18:00:00',
-        event_time: '6:00 PM',
+        title: 'Pokémon Type Mastery Workshop - Water Types',
+        description: 'Learn strategies for Water-type Pokémon. Featuring Lapras, Blastoise, and Gyarados expertise.',
+        location_slug: 'johto',
+        event_date: '2026-04-10 15:00:00',
+        event_time: '3:00 PM',
         image_url: 'https://images.unsplash.com/photo-1489749798305-4fea3ba63d60?w=500',
-        capacity: 200,
-        organizer: 'Brooklyn Arts Collective',
-        category: 'Art & Culture'
+        capacity: 50,
+        organizer: 'Water Pokémon Expert',
+        category: 'Workshop'
       },
       {
-        title: 'LGBTQ+ Support Group',
-        description: 'Safe space for LGBTQ+ individuals and allies. Coffee provided. No experience necessary.',
-        location_slug: 'williamsburg-community-center',
+        title: 'Double Battle Championship',
+        description: 'Showcase your best 2v2 Pokémon battles! Team synergy wins this event.',
+        location_slug: 'hoenn',
         event_date: '2026-03-20 19:00:00',
         event_time: '7:00 PM',
         image_url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500',
-        capacity: 50,
-        organizer: 'Pride NYC',
-        category: 'Community Support'
+        capacity: 64,
+        organizer: 'Hoenn Battle Federation',
+        category: 'Battle Tournament'
       },
       {
-        title: 'Tech Workshop: React Basics',
-        description: 'Learn React fundamentals. Bring your laptop. Basic JS knowledge required.',
-        location_slug: 'williamsburg-community-center',
-        event_date: '2026-03-25 18:30:00',
-        event_time: '6:30 PM',
-        image_url: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500',
-        capacity: 30,
-        organizer: 'Code Academy NYC',
-        category: 'Education'
-      },
-      {
-        title: 'Queens Food Festival',
-        description: 'Celebrate diverse cuisines from around the world. Food vendors, live music, family activities.',
-        location_slug: 'astoria-park',
-        event_date: '2026-05-20 11:00:00',
+        title: 'Pokédex Completion Challenge',
+        description: 'Bring your Pokémon and get them officially registered! Prizes for completion milestones.',
+        location_slug: 'sinnoh',
+        event_date: '2026-03-25 11:00:00',
         event_time: '11:00 AM',
-        image_url: 'https://images.unsplash.com/photo-1555939594-58d7cb561404?w=500',
-        capacity: 1000,
-        organizer: 'Queens Tourism Board',
-        category: 'Food & Culture'
-      },
-      {
-        title: 'Climate Action March',
-        description: 'Join us in advocating for climate action. Signs provided. March starts at 12 PM.',
-        location_slug: 'astoria-park',
-        event_date: '2026-04-22 12:00:00',
-        event_time: '12:00 PM',
-        image_url: 'https://images.unsplash.com/photo-1567521464027-f127ff144326?w=500',
-        capacity: 500,
-        organizer: 'Climate Coalition',
-        category: 'Activism'
-      },
-      {
-        title: 'Art Installation Opening',
-        description: 'New exhibit featuring local artists. Opening reception with light refreshments and artist talks.',
-        location_slug: 'the-high-line',
-        event_date: '2026-03-30 17:00:00',
-        event_time: '5:00 PM',
-        image_url: 'https://images.unsplash.com/photo-1578301978162-7aae4d755744?w=500',
-        capacity: 150,
-        organizer: 'High Line Arts',
-        category: 'Art & Culture'
-      },
-      {
-        title: 'Dog Park Meetup',
-        description: 'Bring your pup to socialize. All sizes and temperaments welcome. Water stations available.',
-        location_slug: 'central-park',
-        event_date: '2026-03-23 14:00:00',
-        event_time: '2:00 PM',
-        image_url: 'https://images.unsplash.com/photo-1633722715463-d30628519adf?w=500',
+        image_url: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500',
         capacity: 200,
-        organizer: 'Dog Lovers NYC',
-        category: 'Social'
+        organizer: 'Pokédex Commission',
+        category: 'Registration'
       },
       {
-        title: 'Night Market & Street Fair',
-        description: 'Local vendors, street food, live performances, and shopping. Come celebrate our community!',
-        location_slug: 'brooklyn-bridge-park',
-        event_date: '2026-06-10 18:00:00',
+        title: 'Legendary Pokémon Documentary Screening',
+        description: 'Watch exclusive footage of legendary Pokémon sightings. Q&A with trainers afterward.',
+        location_slug: 'unova',
+        event_date: '2026-05-20 18:00:00',
         event_time: '6:00 PM',
         image_url: 'https://images.unsplash.com/photo-1555939594-58d7cb561404?w=500',
-        capacity: 800,
-        organizer: 'Brooklyn Community Board',
-        category: 'Community Event'
+        capacity: 150,
+        organizer: 'Pokémon Historical Society',
+        category: 'Documentary'
+      },
+      {
+        title: 'Gym Leader Exhibition Matches',
+        description: 'Watch elite Gym Leaders battle! See how champions battle with their signature Pokémon.',
+        location_slug: 'kanto',
+        event_date: '2026-04-22 16:00:00',
+        event_time: '4:00 PM',
+        image_url: 'https://images.unsplash.com/photo-1567521464027-f127ff144326?w=500',
+        capacity: 300,
+        organizer: 'Pokémon League',
+        category: 'Exhibition'
+      },
+      {
+        title: 'Shiny Pokémon Hunt Expedition',
+        description: 'Join trainers on a quest to find rare Shiny Pokémon! Expert hunters will guide you.',
+        location_slug: 'hoenn',
+        event_date: '2026-03-30 07:00:00',
+        event_time: '7:00 AM',
+        image_url: 'https://images.unsplash.com/photo-1578301978162-7aae4d755744?w=500',
+        capacity: 30,
+        organizer: 'Shiny Hunters Guild',
+        category: 'Adventure'
+      },
+      {
+        title: 'Pokémon Evolution Festival',
+        description: 'Celebrate evolution! Trade Pokémon, witness evolutions, and marvel at beautiful transformations.',
+        location_slug: 'johto',
+        event_date: '2026-03-23 12:00:00',
+        event_time: '12:00 PM',
+        image_url: 'https://images.unsplash.com/photo-1633722715463-d30628519adf?w=500',
+        capacity: 500,
+        organizer: 'Evolution Research Center',
+        category: 'Festival'
+      },
+      {
+        title: 'Elite Four Trial Challenge',
+        description: 'Test your skills against simulated Elite Four trainers! Only 4 victories wins you the prize.',
+        location_slug: 'sinnoh',
+        event_date: '2026-06-10 14:00:00',
+        event_time: '2:00 PM',
+        image_url: 'https://images.unsplash.com/photo-1555939594-58d7cb561404?w=500',
+        capacity: 128,
+        organizer: 'Sinnoh League',
+        category: 'Challenge'
       }
     ];
 
@@ -225,7 +225,7 @@ async function seedDatabase() {
       );
     }
 
-    console.log('✅ Database seeded successfully with locations and events!');
+    console.log('✅ Database seeded successfully with Pokémon regions and events!');
   } catch (err) {
     console.error('❌ Seed failed:', err);
     process.exit(1);

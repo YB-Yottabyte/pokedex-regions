@@ -22,7 +22,7 @@ export default function LocationDetail() {
         setEvents(eventsData);
       } catch (err) {
         console.error(err);
-        setError('Failed to load location details. Please try again.');
+        setError('Failed to load region details. Please try again.');
       } finally {
         setLoading(false);
       }
@@ -33,7 +33,7 @@ export default function LocationDetail() {
   if (loading) {
     return (
       <div className="container">
-        <Link to="/" className="back-link">← Back to Locations</Link>
+        <Link to="/" className="back-link">← Back to Regions</Link>
         <div className="loading">Loading...</div>
       </div>
     );
@@ -42,7 +42,7 @@ export default function LocationDetail() {
   if (error) {
     return (
       <div className="container">
-        <Link to="/" className="back-link">← Back to Locations</Link>
+        <Link to="/" className="back-link">← Back to Regions</Link>
         <div className="error">{error}</div>
       </div>
     );
@@ -51,15 +51,15 @@ export default function LocationDetail() {
   if (!location) {
     return (
       <div className="container">
-        <Link to="/" className="back-link">← Back to Locations</Link>
-        <div className="error">Location not found</div>
+        <Link to="/" className="back-link">← Back to Regions</Link>
+        <div className="error">Region not found</div>
       </div>
     );
   }
 
   return (
     <div className="container">
-      <Link to="/" className="back-link">← Back to Locations</Link>
+      <Link to="/" className="back-link">← Back to Regions</Link>
 
       <section className="location-detail">
         <div className="location-detail-header">
@@ -72,7 +72,7 @@ export default function LocationDetail() {
             <p className="location-description">{location.description}</p>
             {location.latitude && location.longitude && (
               <p className="location-coordinates">
-                📍 {location.latitude.toFixed(4)}, {location.longitude.toFixed(4)}
+                📍 Coordinates: {location.latitude.toFixed(4)}, {location.longitude.toFixed(4)}
               </p>
             )}
           </div>
@@ -81,13 +81,13 @@ export default function LocationDetail() {
 
       <section className="location-events">
         <h2>
-          Events at {location.name}
+          Community Events in {location.name}
           <span className="event-count">({events.length})</span>
         </h2>
 
         {events.length === 0 ? (
           <div className="no-events">
-            <p>No events scheduled at this location yet.</p>
+            <p>No events scheduled in this region yet.</p>
             <Link to="/events" className="btn btn-primary">View all events</Link>
           </div>
         ) : (

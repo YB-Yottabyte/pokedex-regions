@@ -1,6 +1,6 @@
-# Pokemon Regions Explorer - Listicle Part 2
+# Pokemon Regions Explorer
 
-An interactive Pokemon Regions web app that serves region data from a PostgreSQL database through a Node.js + Express backend, with a vanilla HTML/CSS/JavaScript frontend.
+An interactive Pokemon Regions web app that serves region data from a PostgreSQL database with a vanilla HTML/CSS/JavaScript frontend.
 
 ## Live Demo
 

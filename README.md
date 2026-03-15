@@ -4,7 +4,7 @@ An interactive Pokemon Regions web app that serves region data from a PostgreSQL
 
 ## Live Demo
 
-🚀 Visit the live app: https://pokedex-regions.vercel.app/
+Visit the live app: https://pokedex-regions.vercel.app/
 
 ## GIF Walkthrough
 

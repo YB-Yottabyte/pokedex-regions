@@ -37,7 +37,7 @@ Users can:
 
 - [x] The user can search for items with a specific attribute.
 
-## Database Evidence (Required by Rubric)
+## Database Evidence
 
 Add these before final submission:
 - Railway PostgreSQL project link or screenshot

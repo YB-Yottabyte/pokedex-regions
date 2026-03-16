@@ -8,8 +8,7 @@ Visit the live app: https://pokedex-regions.vercel.app/
 
 ## GIF Walkthrough
 
-- Add your GIF here (required for submission):
-  - `![Walkthrough](./assets/project-walkthrough.gif)`
+![Walkthrough](./assets/main.png)
 
 ## Description
 

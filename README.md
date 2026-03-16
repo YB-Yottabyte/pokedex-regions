@@ -6,10 +6,6 @@ An interactive Pokemon Regions web app that serves region data from a PostgreSQL
 
 Visit the live app: https://pokedex-regions.vercel.app/
 
-## GIF Walkthrough
-
-![Walkthrough](./assets/main.png)
-
 ## Description
 
 This project is a refactor of my Unit 1 listicle app. Instead of reading static data directly in the frontend, the app now fetches region data from a PostgreSQL database via API routes.
@@ -39,17 +35,11 @@ Users can:
 
 ## Database Evidence
 
-Add these before final submission:
+![Railway Database](./assets/railway-db.png)
 
-- Railway PostgreSQL project link or screenshot
-- Screenshot of the `regions` table schema
-- Screenshot of table rows that match your displayed region data
+![Regions Table Schema](./assets/regions-schema.png)
 
-Suggested placement:
-
-- `![Railway Database](./assets/railway-db.png)`
-- `![Regions Table Schema](./assets/regions-schema.png)`
-- `![Regions Table Data](./assets/regions-data.png)`
+![Regions Table Data](./assets/regions-data.png)
 
 ## API Endpoints
 

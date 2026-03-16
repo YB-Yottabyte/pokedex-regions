@@ -6,6 +6,13 @@ An interactive Pokemon Regions web app that serves region data from a PostgreSQL
 
 Visit the live app: https://pokedex-regions.vercel.app/
 
+## GIF Walkthrough
+
+<video width="1280" height="720" autoplay loop muted>
+  <source src="./assets/gif.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 ## Description
 
 This project is a refactor of my Unit 1 listicle app. Instead of reading static data directly in the frontend, the app now fetches region data from a PostgreSQL database via API routes.

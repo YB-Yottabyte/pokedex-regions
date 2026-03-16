@@ -35,11 +35,11 @@ Users can:
 
 ## Database Evidence
 
-![Regions Table Schema](./assets/main.png)
+![Railway Database](./assets/main.png)
 
-![Railway Database](./assets/railway-db.png)
+![Regions Table Data](./assets/railway-db.png)
 
-![Regions Table Data]()
+![]()
 
 ## API Endpoints
 

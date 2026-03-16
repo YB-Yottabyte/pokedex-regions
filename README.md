@@ -8,10 +8,7 @@ Visit the live app: https://pokedex-regions.vercel.app/
 
 ## GIF Walkthrough
 
-<video width="1280" height="720" autoplay loop muted>
-  <source src="./assets/gif.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+![Walkthrough](./assets/walkthrough.gif)
 
 ## Description
 

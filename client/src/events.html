@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Events - Pokemon Regions Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="site-bg" aria-hidden="true"></div>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo">&#9670; Pokemon Regions</a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/events" aria-current="page">Community Events</a></li>
+        <li><a href="/events-legacy">Legacy Forum</a></li>
+        <li><a href="/route-not-found-demo">Test 404</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div id="events-app" class="container page-content community-events-page">
+      <div class="skeleton" style="height:120px;margin-bottom:1rem;border-radius:14px;"></div>
+      <div class="skeleton" style="height:380px;border-radius:14px;"></div>
+    </div>
+  </main>
+
+  <footer class="container">
+    <span class="footer-ball" aria-hidden="true"></span>
+    <p>&copy; 2026 Sai Rithwik Kukunuri. All rights reserved.</p>
+  </footer>
+
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel" src="/js/events-react.jsx"></script>
+</body>
+</html>

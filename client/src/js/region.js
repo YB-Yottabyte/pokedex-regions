@@ -23,6 +23,21 @@ function starterCard(s) {
     </div>`;
 }
 
+function locationCard(location) {
+  return `
+    <a href="/locations/${location.slug}" class="community-location-card" style="--rc: ${location.cardColor || '#ffde00'}">
+      <div class="community-location-top">
+        <h4>${location.name}</h4>
+        <span class="gen-badge">${location.eventCount} events</span>
+      </div>
+      <p>${location.description}</p>
+      <div class="community-location-meta">
+        <span>${location.regionName}</span>
+        <span>Open location page &rarr;</span>
+      </div>
+    </a>`;
+}
+
 function render(r) {
   document.title = `${r.name} \u2014 Pok\u00e9mon Regions`;
 
@@ -100,7 +115,39 @@ function render(r) {
           </article>
         </div>
       </div>
+
+      <section class="community-events-shell">
+        <header class="community-events-head">
+          <h2>Virtual Community Event Space</h2>
+          <p>Select a location in ${r.name} to view events with dedicated detail pages.</p>
+        </header>
+        <div class="community-location-grid" id="location-grid">
+          <div class="skeleton" style="height:160px;border-radius:16px;"></div>
+          <div class="skeleton" style="height:160px;border-radius:16px;"></div>
+        </div>
+      </section>
     </div>`;
+}
+
+async function loadLocations(regionSlug) {
+  const locationGrid = document.getElementById('location-grid');
+  if (!locationGrid) return;
+
+  try {
+    const res = await fetch(`/api/locations?regionSlug=${encodeURIComponent(regionSlug)}`);
+    if (!res.ok) throw new Error('Failed to fetch locations');
+    const locations = await res.json();
+
+    if (!locations.length) {
+      locationGrid.innerHTML = '<p class="community-empty">No locations are available for this region yet.</p>';
+      return;
+    }
+
+    locationGrid.innerHTML = locations.map(locationCard).join('');
+  } catch (err) {
+    locationGrid.innerHTML = '<p class="community-empty">Could not load locations right now.</p>';
+    console.error(err);
+  }
 }
 
 async function load() {
@@ -113,6 +160,7 @@ async function load() {
     if (!res.ok) throw new Error('Server error');
     const region = await res.json();
     render(region);
+    await loadLocations(region.slug);
   } catch (err) {
     document.getElementById('region-content').innerHTML = `
       <div class="container page-content">

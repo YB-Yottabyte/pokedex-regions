@@ -214,6 +214,57 @@ const regions = [
   },
 ];
 
+const eventBlueprints = [
+  {
+    title: 'Trainer Strategy Workshop',
+    type: 'Workshop',
+    durationHours: 2,
+    capacity: 40,
+    description: 'Build team comps, review move synergy, and prep for local challenge ladders.',
+  },
+  {
+    title: 'Community Raid Hour',
+    type: 'Raid',
+    durationHours: 2,
+    capacity: 80,
+    description: 'Group up with local trainers for coordinated raid rotations and rewards.',
+  },
+  {
+    title: 'Pokeball Craft Meetup',
+    type: 'Meetup',
+    durationHours: 3,
+    capacity: 35,
+    description: 'Share custom designs, tips, and stories while building themed Pokeballs.',
+  },
+  {
+    title: 'Battle League Night',
+    type: 'Tournament',
+    durationHours: 3,
+    capacity: 64,
+    description: 'Friendly bracket matches for all skill levels with coaching between rounds.',
+  },
+];
+
+function slugify(value) {
+  return String(value)
+    .toLowerCase()
+    .trim()
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .replace(/-{2,}/g, '-');
+}
+
+function addHours(date, hours) {
+  return new Date(date.getTime() + hours * 60 * 60 * 1000);
+}
+
+function resolveStatus(startsAt, endsAt, now) {
+  if (startsAt > now) return 'scheduled';
+  if (startsAt <= now && endsAt > now) return 'live';
+  return 'completed';
+}
+
 async function seed() {
   const client = await pool.connect();
   try {
@@ -238,16 +289,47 @@ async function seed() {
       )
     `);
 
-    // Clear existing data before re-seeding
-    await client.query('TRUNCATE TABLE regions RESTART IDENTITY');
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS locations (
+        id            SERIAL PRIMARY KEY,
+        region_id     INTEGER NOT NULL REFERENCES regions(id) ON DELETE CASCADE,
+        name          VARCHAR(120) NOT NULL,
+        slug          VARCHAR(150) NOT NULL UNIQUE,
+        description   TEXT NOT NULL,
+        spotlight     VARCHAR(120) NOT NULL,
+        card_color    VARCHAR(7),
+        created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW()
+      )
+    `);
 
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS events (
+        id             SERIAL PRIMARY KEY,
+        location_id    INTEGER NOT NULL REFERENCES locations(id) ON DELETE CASCADE,
+        title          VARCHAR(180) NOT NULL,
+        description    TEXT NOT NULL,
+        event_type     VARCHAR(60) NOT NULL,
+        starts_at      TIMESTAMPTZ NOT NULL,
+        ends_at        TIMESTAMPTZ NOT NULL,
+        capacity       INTEGER NOT NULL DEFAULT 20,
+        attendee_count INTEGER NOT NULL DEFAULT 0,
+        status         VARCHAR(24) NOT NULL DEFAULT 'scheduled',
+        created_at     TIMESTAMPTZ NOT NULL DEFAULT NOW()
+      )
+    `);
+
+    // Clear existing data before re-seeding.
+    await client.query('TRUNCATE TABLE events, locations, regions RESTART IDENTITY CASCADE');
+
+    const insertedRegions = [];
     for (const r of regions) {
-      await client.query(
+      const result = await client.query(
         `INSERT INTO regions
           (name, slug, generation, games, description, starters, legendary,
            gym_count, trial_count, color, introduced, notable_locations,
            pokemon_count, professor, villain)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)`,
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)
+         RETURNING id, slug, name, color, notable_locations`,
         [
           r.name, r.slug, r.generation, r.games, r.description,
           JSON.stringify(r.starters), JSON.stringify(r.legendary),
@@ -255,9 +337,68 @@ async function seed() {
           r.notable_locations, r.pokemon_count, r.professor, r.villain,
         ]
       );
+      insertedRegions.push(result.rows[0]);
     }
 
-    console.log(`Seeded ${regions.length} regions successfully.`);
+    const insertedLocations = [];
+    for (const region of insertedRegions) {
+      const topLocations = (region.notable_locations || [])
+        .filter(Boolean)
+        .slice(0, 4);
+
+      for (const name of topLocations) {
+        const slug = `${region.slug}-${slugify(name)}`;
+        const locResult = await client.query(
+          `INSERT INTO locations (region_id, name, slug, description, spotlight, card_color)
+           VALUES ($1, $2, $3, $4, $5, $6)
+           RETURNING id, name, slug, region_id`,
+          [
+            region.id,
+            name,
+            slug,
+            `${name} is an active community hub in ${region.name} where trainers gather for social play and events.`,
+            `Featured spot in ${region.name}`,
+            region.color,
+          ]
+        );
+        insertedLocations.push(locResult.rows[0]);
+      }
+    }
+
+    const now = new Date();
+    let eventsSeeded = 0;
+    for (const location of insertedLocations) {
+      for (let i = 0; i < 3; i += 1) {
+        const template = eventBlueprints[(location.id + i) % eventBlueprints.length];
+        const hourOffset = -30 + (i * 30) + ((location.id % 4) * 4);
+        const startsAt = addHours(now, hourOffset);
+        const endsAt = addHours(startsAt, template.durationHours);
+        const status = resolveStatus(startsAt, endsAt, now);
+        const attendeeBase = Math.max(6, Math.floor(template.capacity * 0.35));
+
+        await client.query(
+          `INSERT INTO events
+            (location_id, title, description, event_type, starts_at, ends_at, capacity, attendee_count, status)
+           VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
+          [
+            location.id,
+            `${template.title} at ${location.name}`,
+            template.description,
+            template.type,
+            startsAt.toISOString(),
+            endsAt.toISOString(),
+            template.capacity,
+            attendeeBase + ((location.id + i) % 9),
+            status,
+          ]
+        );
+        eventsSeeded += 1;
+      }
+    }
+
+    console.log(
+      `Seeded ${regions.length} regions, ${insertedLocations.length} locations, and ${eventsSeeded} events successfully.`
+    );
   } finally {
     client.release();
     await pool.end();

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Events Legacy - Pokemon Regions Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="site-bg" aria-hidden="true"></div>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo">&#9670; Pokemon Regions</a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/events">Community Events (React)</a></li>
+        <li><a href="/events-legacy" aria-current="page">Legacy Forum</a></li>
+        <li><a href="/route-not-found-demo">Test 404</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container page-content community-events-page">
+      <a href="/events" class="back-btn">&#8592; Back to React Events Page</a>
+
+      <section class="community-events-shell">
+        <header class="community-events-head">
+          <h1>Virtual Community Event Space (Legacy)</h1>
+          <p>Previous implementation preserved while keeping the React version for grading requirements.</p>
+        </header>
+
+        <section class="live-feed-shell" aria-label="Live web data">
+          <div class="live-feed-head">
+            <h2>Live Pokemon Feed (Web Data)</h2>
+            <p id="live-feed-meta">Loading live data from PokeAPI...</p>
+          </div>
+
+          <div class="live-feed-controls">
+            <label class="community-control">
+              <span>Sort live feed</span>
+              <select id="live-sort" class="community-select">
+                <option value="dex">Dex Number (Ascending)</option>
+                <option value="dex-desc">Dex Number (Descending)</option>
+                <option value="exp">Base Experience (High to Low)</option>
+              </select>
+            </label>
+            <button id="live-refresh" class="hero-cta live-refresh-btn" type="button">Refresh Live Feed</button>
+          </div>
+
+          <section class="forum-shell" aria-label="Community forum">
+            <div class="forum-head">
+              <h3>Community Forum</h3>
+              <p>Live discussion threads generated from the current PokeAPI feed. Join what trainers are talking about now.</p>
+            </div>
+            <div id="forum-list" class="forum-list">
+              <div class="skeleton" style="height:180px;border-radius:12px;"></div>
+              <div class="skeleton" style="height:180px;border-radius:12px;"></div>
+              <div class="skeleton" style="height:180px;border-radius:12px;"></div>
+            </div>
+          </section>
+
+          <div id="live-feed-grid" class="live-feed-grid">
+            <div class="skeleton" style="height:180px;border-radius:14px;"></div>
+            <div class="skeleton" style="height:180px;border-radius:14px;"></div>
+          </div>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <footer class="container">
+    <span class="footer-ball" aria-hidden="true"></span>
+    <p>&copy; 2026 Sai Rithwik Kukunuri. All rights reserved.</p>
+  </footer>
+
+  <script src="/js/events.js"></script>
+</body>
+</html>
